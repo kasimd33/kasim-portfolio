@@ -55,26 +55,31 @@ const Contact = () => {
     setIsSubmitting(true)
 
     try {
-      // Simulate API call - in production, this would be a real API endpoint
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      const { submitContactForm } = await import('@/lib/firestore')
+      const result = await submitContactForm(formData)
       
-      setIsSubmitted(true)
-      toast({
-        title: "Message sent successfully!",
-        description: "I'll get back to you as soon as possible.",
-      })
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      })
-      
-      // Reset success state after 5 seconds
-      setTimeout(() => setIsSubmitted(false), 5000)
+      if (result.success) {
+        setIsSubmitted(true)
+        toast({
+          title: "Message sent successfully!",
+          description: "I'll get back to you as soon as possible.",
+        })
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        })
+        
+        // Reset success state after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000)
+      } else {
+        throw new Error(result.error)
+      }
     } catch (error) {
+      console.error('Contact form error:', error)
       toast({
         title: "Error sending message",
         description: "Please try again later.",
