@@ -1,0 +1,174 @@
+{
+  "site": {
+    "title": "Kasim — Portfolio",
+    "description": "Full-stack developer building delightful web experiences with modern technologies.",
+    "author": "Kasim",
+    "url": "https://kasim.dev",
+    "resumeUrl": "/resume.pdf"
+  },
+  "hero": {
+    "name": "Kasim SK",
+    "roles": [
+      "Full-Stack Developer",
+      "Creative Technologist"
+    ],
+    "tagline": "Building digital experiences that matter",
+    "primaryCTA": "View Work",
+    "secondaryCTA": "Download Resume"
+  },
+  "about": {
+    "photo": "/images/profile.jpg",
+    "bio": [
+      "I'm an Information Science student passionate about creating innovative web applications that solve real-world problems. With a strong foundation in both frontend and backend technologies, I bring ideas to life through clean, efficient code.",
+      "My journey in web development started with a curiosity about how things work on the internet, and has evolved into a career focused on building user-centric applications. I specialize in React ecosystems, modern JavaScript frameworks, and creating seamless user experiences.",
+      "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. I believe in the power of technology to make a positive impact on people's lives."
+    ],
+    "skills": [
+      { "name": "React/Next.js", "level": 90 },
+      { "name": "TypeScript", "level": 85 },
+      { "name": "Node.js", "level": 80 },
+      { "name": "Tailwind CSS", "level": 88 },
+      { "name": "Prisma", "level": 75 },
+      { "name": "Framer Motion", "level": 82 },
+      { "name": "Python", "level": 70 }
+     
+    ]
+  },
+  "projects": [
+    {
+      "id": "ballotbridge-01",
+      "title": "BallotBridge — Secure Online Voting System",
+      "thumbnail": "/images/projects/ballotbridge.webp",
+      "description": "Full-stack web application for secure online voting with real-time results, voter authentication, and transparent ballot counting. Implemented robust security measures and user-friendly interface.",
+      "tech": ["React.js", "Node.js", "Express", "MongoDB", "JWT", "Socket.io"],
+      "liveUrl": "https://ballotbridge.vercel.app",
+      "repoUrl": "https://github.com/kasimsk/ballotbridge",
+      "featured": true
+    },
+    {
+      "id": "bookreviews-02",
+      "title": "BookReviews — Literary Review Platform",
+      "thumbnail": "/images/projects/bookreviews.webp",
+      "description": "Interactive platform for book enthusiasts to share reviews, ratings, and recommendations. Features user profiles, search functionality, and community-driven content.",
+      "tech": ["React.js", "Node.js", "Express", "MySQL", "Bootstrap", "REST API"],
+      "liveUrl": "https://bookreviews.vercel.app",
+      "repoUrl": "https://github.com/kasimsk/bookreviews",
+      "featured": true
+    },
+    {
+      "id": "weather-03",
+      "title": "Weather Forecasting Application",
+      "thumbnail": "/images/projects/weather.webp",
+      "description": "Responsive weather application providing accurate forecasts, current conditions, and location-based weather data. Integrated with external weather APIs for real-time updates.",
+      "tech": ["JavaScript", "HTML5", "CSS3", "Weather API", "Geolocation", "Chart.js"],
+      "liveUrl": "https://weather-app-kasim.vercel.app",
+      "repoUrl": "https://github.com/kasimsk/weather-forecasting",
+      "featured": true
+    },
+    {
+      "id": "medoc-04",
+      "title": "Medoc — Telemedicine Platform",
+      "thumbnail": "/images/projects/medoc.webp",
+      "description": "Healthcare management system enabling online doctor consultations, appointment booking, and patient record management. Streamlined interface for both patients and healthcare providers.",
+      "tech": ["React.js", "Node.js", "Express", "MongoDB", "Socket.io", "Stripe API"],
+      "liveUrl": "https://medoc-platform.vercel.app",
+      "repoUrl": "https://github.com/kasimsk/medoc",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-01",
+      "company": "Freelance Web Developer",
+      "position": "Full-Stack Developer",
+      "period": "Jan 2024 - Present",
+      "description": "Developing custom web applications for small businesses and startups. Specializing in React.js, Node.js, and modern web technologies to deliver scalable solutions.",
+      "achievements": [
+        "Delivered 2 web applications for various clients",
+        "Implemented responsive designs with 95%+ mobile compatibility",
+        "Integrated payment systems and third-party APIs"
+      ]
+    },
+    {
+      "id": "exp-02",
+      "company": "Tech Learning Bootcamp",
+      "position": "Web Development Student",
+      "period": "Aug 2023 - Dec 2023",
+      "description": "Intensive full-stack web development program covering modern JavaScript frameworks, database management, and software engineering best practices.",
+      "achievements": [
+        "Completed 12+ hands-on projects",
+        "Mastered React, Node.js, and MongoDB",
+        "Collaborated on team projects using Git and Agile methodologies"
+      ]
+    },
+    {
+      "id": "exp-03",
+      "company": "Personal Projects",
+      "position": "Independent Developer",
+      "period": "Jun 2023 - Present",
+      "description": "Building and maintaining personal projects to enhance technical skills and create portfolio pieces. Focus on full-stack web applications with modern UI/UX.",
+      "achievements": [
+        "Developed 4 major web applications",
+        "Gained expertise in React, Node.js, and database design",
+        "Implemented modern development practices and deployment strategies"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-01",
+      "institution": "Rao Bahaddur Y Mahabaleshwarappa Engineering College",
+      "degree": " Information Science and Engineering",
+      "period": "2022 - 2026",
+      "description": "Currently pursuing B.E. in Information Science and Engineering. Relevant coursework: Data Structures, Web Technologies, Database Management, Software Engineering.",
+      "achievements": [
+        "Consistent academic performance with 8.5+ CGPA",
+        "Active member of Technical Club",
+        "Participated in multiple hackathons and coding competitions"
+      ]
+    }
+  ],
+  "social": {
+    "github": "https://github.com/kasimd33",
+    "linkedin": "https://www.linkedin.com/in/khasim-d-90a666255",
+    "twitter": "https://twitter.com/kasim_dev",
+    "email": "kasi47837@gmail.com"
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "description": "I'm always interested in hearing about new opportunities and exciting projects. Feel free to reach out!",
+    "email": "kasi47837@gmail.com",
+    "phone": "+91 7019588349",
+    "location": "https://maps.app.goo.gl/KtHhM1kiDHa7sRas9",
+    "formFields": [
+      {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true,
+        "placeholder": "Your name"
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true,
+        "placeholder": "your.email@example.com"
+      },
+      {
+        "name": "subject",
+        "label": "Subject",
+        "type": "text",
+        "required": true,
+        "placeholder": "Project inquiry or collaboration"
+      },
+      {
+        "name": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": true,
+        "placeholder": "Tell me about your project..."
+      }
+    ]
+  }
+}
