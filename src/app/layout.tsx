@@ -59,6 +59,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Lexend:wght@100..900&family=Michroma&display=swap" rel="stylesheet" />
+        <link rel="preload" href="/images/profile.jpg-removebg-preview.png" as="image" />
+        <link rel="dns-prefetch" href="https://drive.google.com" />
       </head>
       <body
         className="antialiased bg-background text-foreground"

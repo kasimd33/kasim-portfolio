@@ -106,14 +106,14 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Bellary, Karnataka',
+      value: 'Ballari, Karnataka, 583101',
       href: siteData.contact.location
     }
   ]
 
   return (
-    <section id="contact" className="py-20 bg-secondary/5">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-secondary/5 w-full max-w-full overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -122,39 +122,39 @@ const Contact = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
               Get In <span className="gradient-text">Touch</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               {siteData.contact.description}
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <Card className="border-0 shadow-xl card-hover glass">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                <CardContent className="p-4 sm:p-6 md:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Send a Message</h3>
                   
                   {isSubmitted ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="text-center py-12"
+                      className="text-center py-8 sm:py-12"
                     >
-                      <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                      <h4 className="text-xl font-semibold mb-2">Message Sent!</h4>
-                      <p className="text-muted-foreground">
+                      <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-3 sm:mb-4" />
+                      <h4 className="text-lg sm:text-xl font-semibold mb-2">Message Sent!</h4>
+                      <p className="text-sm sm:text-base text-muted-foreground">
                         Thank you for reaching out. I'll get back to you soon.
                       </p>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                       {siteData.contact.formFields.map((field) => (
-                        <div key={field.name} className="space-y-2">
-                          <Label htmlFor={field.name} className="text-sm font-medium">
+                        <div key={field.name} className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor={field.name} className="text-xs sm:text-sm font-medium">
                             {field.label} {field.required && <span className="text-red-500">*</span>}
                           </Label>
                           {field.type === 'textarea' ? (
@@ -166,7 +166,7 @@ const Contact = () => {
                               placeholder={field.placeholder}
                               required={field.required}
                               rows={5}
-                              className="resize-none"
+                              className="resize-none text-sm sm:text-base min-h-[120px]"
                             />
                           ) : (
                             <Input
@@ -177,6 +177,7 @@ const Contact = () => {
                               onChange={handleInputChange}
                               placeholder={field.placeholder}
                               required={field.required}
+                              className="text-sm sm:text-base h-11 sm:h-12"
                             />
                           )}
                         </div>
@@ -185,7 +186,7 @@ const Contact = () => {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-12 text-base font-medium bg-gradient-to-r from-primary to-primary/90 btn-glow"
+                        className="w-full h-12 min-h-[48px] text-sm sm:text-base font-medium bg-gradient-to-r from-primary to-primary/90 btn-glow"
                       >
                         {isSubmitting ? (
                           <motion.div
@@ -207,31 +208,31 @@ const Contact = () => {
             </motion.div>
 
             {/* Contact Information */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6 md:space-y-8">
               {/* Quick Contact Info */}
               <Card className="border-0 shadow-xl card-hover glass">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                <CardContent className="p-4 sm:p-6 md:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Contact Information</h3>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-3 sm:space-y-4 md:space-y-6">
                     {contactInfo.map((info, index) => (
                       <motion.a
                         key={info.label}
                         href={info.href}
-                        className="flex items-center gap-4 p-4 rounded-lg hover:bg-accent transition-colors group"
+                        className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg hover:bg-accent transition-colors group min-h-[60px]"
                         whileHover={{ x: 5 }}
                         transition={{ duration: 0.2 }}
                       >
                         <motion.div 
-                          className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg ring-2 ring-primary/10"
+                          className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg ring-2 ring-primary/10 flex-shrink-0"
                           whileHover={{ scale: 1.1, rotate: 10 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <info.icon className="w-6 h-6 text-primary" />
+                          <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </motion.div>
-                        <div>
-                          <p className="font-medium">{info.label}</p>
-                          <p className="text-muted-foreground">{info.value}</p>
+                        <div className="min-w-0">
+                          <p className="font-medium text-sm sm:text-base">{info.label}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">{info.value}</p>
                         </div>
                       </motion.a>
                     ))}
@@ -241,10 +242,10 @@ const Contact = () => {
 
               {/* Social Links */}
               <Card className="border-0 shadow-xl card-hover glass">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Connect on Social</h3>
+                <CardContent className="p-4 sm:p-6 md:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Connect on Social</h3>
                   
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {Object.entries(siteData.social).map(([platform, url]) => {
                       if (platform === 'email') return null
                       
@@ -254,22 +255,23 @@ const Contact = () => {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 p-4 rounded-lg border hover:bg-accent transition-colors group glass backdrop-blur-sm"
+                          className="flex items-center gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-lg border hover:bg-accent transition-colors group glass backdrop-blur-sm min-h-[56px]"
                           whileHover={{ scale: 1.02, y: -2 }}
                           whileTap={{ scale: 0.98 }}
                         >
                           <motion.div 
-                            className="w-10 h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg ring-2 ring-primary/10"
+                            className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors shadow-lg ring-2 ring-primary/10 flex-shrink-0"
                             whileHover={{ scale: 1.1, rotate: 15 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
                             <img 
                               src={`/icons/${platform}.svg`} 
                               alt={platform}
-                              className="w-5 h-5"
+                              className="w-4 h-4 sm:w-5 sm:h-5"
+                              loading="lazy"
                             />
                           </motion.div>
-                          <span className="font-medium capitalize">{platform}</span>
+                          <span className="font-medium capitalize text-sm sm:text-base">{platform}</span>
                         </motion.a>
                       )
                     })}
@@ -279,18 +281,18 @@ const Contact = () => {
 
               {/* Response Time */}
               <Card className="border-0 shadow-xl bg-gradient-to-r from-primary/5 to-secondary/5 card-hover glass">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
                     <motion.div 
-                      className="w-10 h-10 bg-gradient-to-br from-primary/30 to-primary/20 rounded-full flex items-center justify-center shadow-lg ring-2 ring-primary/20"
+                      className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-primary/30 to-primary/20 rounded-full flex items-center justify-center shadow-lg ring-2 ring-primary/20 flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 10 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <Mail className="w-5 h-5 text-primary" />
+                      <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                     </motion.div>
-                    <div>
-                      <p className="font-medium">Response Time</p>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="min-w-0">
+                      <p className="font-medium text-sm sm:text-base">Response Time</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         I typically respond within 24-48 hours
                       </p>
                     </div>

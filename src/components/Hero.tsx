@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import { HoverButton } from '@/components/ui/hover-button'
 import { ArrowDown, Download, ExternalLink } from 'lucide-react'
 import { DottedSurface } from '@/components/ui/dotted-surface'
-import { ShaderAnimation } from '@/components/ui/shader-animation'
 import { FadeContent } from '@/components/ui/FadeContent'
 import ProfileCard from '@/components/ui/ProfileCard'
+import GlitchText from '@/components/ui/GlitchText'
 import siteData from '@/data/siteData.json'
 import Image from 'next/image'
 
@@ -54,76 +54,91 @@ const Hero = () => {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-0 -mt-2">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 w-full max-w-full">
 
       
-      {/* Shader Animation Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <ShaderAnimation />
-      </div>
+      {/* Dotted Surface Background */}
+      <DottedSurface className="absolute inset-0 w-full h-full z-0" />
       
       {/* Dark Overlay for better text readability */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-black/40 z-10"
+        className="pointer-events-none absolute inset-0 bg-black/40 z-10 overflow-hidden"
       />
       
       {/* Radial Gradient Overlay */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--foreground)/.05),transparent_70%)] z-15"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--foreground)/.05),transparent_70%)] z-15 overflow-hidden"
       />
       
-      <div className="responsive-container relative z-30 section-padding">
-        <div className="responsive-grid lg:grid-cols-2 items-center max-w-7xl mx-auto">
+      {/* Top Fade */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-background to-transparent z-20"
+      />
+      
+      {/* Bottom Fade */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent z-20"
+      />
+      
+      <div className="container mx-auto relative z-30 py-8 sm:py-12 lg:py-16 max-w-full px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto">
           {/* Left side - Main content */}
-          <div className="text-center lg:text-left lg:order-1 order-2">
+          <div className="text-center lg:text-left order-2 lg:order-1">
           {/* Greeting */}
-          <FadeContent duration={600} className="mb-4">
-            <span className="text-sm md:text-base font-semibold text-foreground/80 tracking-wide uppercase accent-text">
+          <FadeContent duration={600} className="mb-3 sm:mb-4">
+            <span className="text-xs sm:text-sm md:text-base font-semibold text-foreground/80 tracking-wide uppercase accent-text">
               Hello, I'm
             </span>
           </FadeContent>
 
           {/* Name */}
-          <FadeContent duration={600} delay={100} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-4 lg:mb-6 tracking-tight">
-            <span className="relative z-10 text-high-contrast hero-name bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+          <FadeContent duration={600} delay={100} className="mb-3 sm:mb-4 lg:mb-6">
+            <GlitchText
+              speed={1}
+              enableShadows={true}
+              enableOnHover={true}
+              className="hero-name"
+            >
               {siteData.hero.name}
-            </span>
+            </GlitchText>
           </FadeContent>
 
           {/* Typewriter Role */}
-          <FadeContent duration={600} delay={200} className="h-8 sm:h-10 md:h-12 mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0 relative z-10">
-            <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-primary drop-shadow-2xl font-heading">
+          <FadeContent duration={600} delay={200} className="h-8 sm:h-10 md:h-12 mb-4 sm:mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0 relative z-10">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary drop-shadow-2xl font-heading">
               {displayText}
-              <span className="inline-block w-1 h-6 sm:h-8 md:h-10 bg-primary ml-2 drop-shadow-lg animate-pulse" />
-            </span>
+              <span className="inline-block w-0.5 sm:w-1 h-5 sm:h-6 md:h-8 lg:h-10 bg-primary ml-1 sm:ml-2 drop-shadow-lg animate-pulse" />
+            </p>
           </FadeContent>
 
           {/* Tagline */}
-          <FadeContent duration={600} delay={300} className="text-base sm:text-lg md:text-xl text-high-contrast mb-8 lg:mb-10 max-w-3xl mx-auto lg:mx-0 relative z-10 font-medium leading-relaxed">
+          <FadeContent duration={600} delay={300} className="text-sm sm:text-base md:text-lg lg:text-xl text-high-contrast mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto lg:mx-0 relative z-10 font-medium leading-relaxed">
             {siteData.hero.tagline}
           </FadeContent>
 
           {/* CTA Buttons */}
-          <FadeContent duration={600} delay={400} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center mb-8 lg:mb-12">
+          <FadeContent duration={600} delay={400} className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center mb-6 sm:mb-8 lg:mb-12">
             <HoverButton
               onClick={() => scrollToSection('#projects')}
-              className="btn-responsive font-medium w-full sm:w-auto"
+              className="px-6 py-3 sm:px-8 sm:py-3 font-medium w-full sm:w-auto min-h-[48px] text-sm sm:text-base"
             >
               {siteData.hero.primaryCTA}
             </HoverButton>
 
             <HoverButton
               onClick={handleDownloadResume}
-              className="btn-responsive font-medium w-full sm:w-auto"
+              className="px-6 py-3 sm:px-8 sm:py-3 font-medium w-full sm:w-auto min-h-[48px] text-sm sm:text-base"
             >
               {siteData.hero.secondaryCTA}
             </HoverButton>
           </FadeContent>
 
           {/* Social Links */}
-          <FadeContent duration={600} delay={500} className="flex gap-3 sm:gap-4 justify-center lg:justify-start mb-8 lg:mb-12">
+          <FadeContent duration={600} delay={500} className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-12">
             {Object.entries(siteData.social).map(([platform, url]) => {
               const getIcon = () => {
                 switch(platform) {
@@ -146,7 +161,7 @@ const Hero = () => {
                   href={platform === 'email' ? 'mailto:kasi47837@gmail.com?subject=Contact from Portfolio&body=Hi Kasim,' : url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full glass shadow-md hover:shadow-lg hover:scale-110 hover:-translate-y-1 hover:rotate-3 transition-all duration-300 backdrop-blur-sm text-gray-300 hover:text-white"
+                  className="p-3 sm:p-3.5 rounded-full glass shadow-md hover:shadow-lg hover:scale-110 hover:-translate-y-1 hover:rotate-3 transition-all duration-300 backdrop-blur-sm text-gray-300 hover:text-white min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label={`Visit ${platform}`}
                 >
                   {getIcon()}
@@ -157,8 +172,8 @@ const Hero = () => {
           </div>
           
           {/* Right side - Profile Card */}
-          <div className="flex justify-center items-center lg:order-2 order-1 mb-8 lg:mb-0">
-            <FadeContent duration={800} delay={600}>
+          <div className="flex justify-center items-center order-1 lg:order-2 mb-6 sm:mb-8 lg:mb-0 w-full max-w-full overflow-hidden">
+            <FadeContent duration={800} delay={600} className="w-full max-w-full flex justify-center">
               <ProfileCard
                 name={siteData.hero.name}
                 title={siteData.hero.roles[0]}
@@ -176,13 +191,14 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <FadeContent duration={600} delay={800} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div
-          className="cursor-pointer animate-bounce hover:scale-110 transition-transform duration-200"
+      <FadeContent duration={600} delay={800} className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2">
+        <button
+          className="cursor-pointer animate-bounce hover:scale-110 transition-transform duration-200 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => scrollToSection('#about')}
+          aria-label="Scroll to about section"
         >
-          <ArrowDown className="w-6 h-6 text-muted-foreground" />
-        </div>
+          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" />
+        </button>
       </FadeContent>
     </section>
   )

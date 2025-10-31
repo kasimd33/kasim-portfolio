@@ -22,17 +22,17 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 	useEffect(() => {
 		if (!containerRef.current) return;
 
-		const container = containerRef.current;
-		const SEPARATION = 100;
-		const AMOUNTX = 50;
-		const AMOUNTY = 80;
+		const SEPARATION = 200;
+		const AMOUNTX = 25;
+		const AMOUNTY = 35;
 
 		// Scene setup
 		const scene = new THREE.Scene();
+		scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
 
 		const camera = new THREE.PerspectiveCamera(
 			60,
-			container.clientWidth / container.clientHeight,
+			window.innerWidth / window.innerHeight,
 			1,
 			10000,
 		);
@@ -42,11 +42,11 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 			alpha: true,
 			antialias: true,
 		});
-		renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(container.clientWidth, container.clientHeight);
-		renderer.setClearColor(0x000000, 0);
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.setClearColor(scene.fog.color, 0);
 
-		container.appendChild(renderer.domElement);
+		containerRef.current.appendChild(renderer.domElement);
 
 		// Create particles
 		const particles: THREE.Points[] = [];
@@ -116,17 +116,24 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
 			positionAttribute.needsUpdate = true;
 
+			// Update point sizes based on wave
+			const customMaterial = material as THREE.PointsMaterial & {
+				uniforms?: any;
+			};
+			if (!customMaterial.uniforms) {
+				// For dynamic size changes, we'd need a custom shader
+				// For now, keeping constant size for performance
+			}
+
 			renderer.render(scene, camera);
-			count += 0.1;
+			count += 0.05;
 		};
 
 		// Handle window resize
 		const handleResize = () => {
-			if (!containerRef.current) return;
-			const container = containerRef.current;
-			camera.aspect = container.clientWidth / container.clientHeight;
+			camera.aspect = window.innerWidth / window.innerHeight;
 			camera.updateProjectionMatrix();
-			renderer.setSize(container.clientWidth, container.clientHeight);
+			renderer.setSize(window.innerWidth, window.innerHeight);
 		};
 
 		window.addEventListener('resize', handleResize);
@@ -177,7 +184,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 	return (
 		<div
 			ref={containerRef}
-			className={cn('pointer-events-none absolute inset-0 z-0', className)}
+			className={cn('pointer-events-none absolute inset-0', className)}
 			{...props}
 		/>
 	);

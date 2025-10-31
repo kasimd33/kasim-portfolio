@@ -158,13 +158,15 @@ function FutureNavbar() {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setShowMenu(false);
     }
   };
 
   return (
     <MobileMenuContext.Provider value={{ showMenu, setShowMenu }}>
-      <div className="h-16 mt-2 mx-2 lg:-mt-px lg:-mx-px flex w-full top-0 inset-x-0 z-40">
-        <div className="size-full relative -mr-[11px] hidden lg:block">
+      <nav className="fixed top-0 left-0 right-0 z-[100] bg-background/80 backdrop-blur-md max-w-full overflow-hidden">
+      <div className="h-16 mt-2 mx-2 lg:-mt-px lg:-mx-px flex w-full inset-x-0 max-w-full">
+        <div className="size-full relative -mr-[11px] hidden lg:block overflow-hidden">
           <Frame
             className="drop-shadow-2xl"
             paths={JSON.parse(
@@ -180,8 +182,8 @@ function FutureNavbar() {
             )}
           />
         </div>
-        <div className="flex lg:container h-full relative flex-none w-full">
-          <div className="flex-none h-full px-14 relative w-full lg:w-auto">
+        <div className="flex lg:container h-full relative flex-none w-full max-w-full overflow-hidden">
+          <div className="flex-none h-full px-4 sm:px-8 lg:px-14 relative w-full lg:w-auto max-w-full overflow-hidden">
             <Frame
               enableBackdropBlur
               className="drop-shadow-2xl"
@@ -207,16 +209,18 @@ function FutureNavbar() {
                 <button onClick={() => handleNavClick('#experience')}>Experience</button>
                 <button onClick={() => handleNavClick('#contact')}>Contact</button>
               </div>
-              <div
+              <button
                 onClick={() => setShowMenu(true)}
-                className="cursor-pointer ms-auto flex items-center gap-2 lg:hidden font-medium"
+                aria-expanded={showMenu}
+                aria-label="Open navigation menu"
+                className="cursor-pointer ms-auto flex items-center gap-2 lg:hidden font-medium min-h-[44px] px-2"
               >
                 <Zap className="size-4" />
                 Menu
-              </div>
+              </button>
             </div>
           </div>
-          <div className="w-full relative -ml-[25px] lg:flex justify-end pe-8 hidden">
+          <div className="w-full relative -ml-[25px] lg:flex justify-end pe-8 hidden overflow-hidden">
             <Frame
               enableBackdropBlur
               className="drop-shadow-2xl"
@@ -241,7 +245,7 @@ function FutureNavbar() {
             </div>
           </div>
         </div>
-        <div className="size-full relative -ml-[18px] hidden lg:block">
+        <div className="size-full relative -ml-[18px] hidden lg:block overflow-hidden">
           <Frame
             paths={JSON.parse(
               `[{
@@ -257,6 +261,48 @@ function FutureNavbar() {
           />
         </div>
       </div>
+      
+      {/* Mobile Menu Overlay */}
+      {showMenu && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-[110] lg:hidden"
+          onClick={() => setShowMenu(false)}
+          aria-hidden="true"
+        />
+      )}
+      
+      {/* Mobile Menu Drawer */}
+      <div 
+        className={`fixed top-0 right-0 h-full w-64 bg-background border-l shadow-2xl transform transition-transform duration-300 z-[120] lg:hidden ${
+          showMenu ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-8">
+            <span className="font-bold text-lg">Menu</span>
+            <button
+              onClick={() => setShowMenu(false)}
+              aria-label="Close navigation menu"
+              className="p-2 hover:bg-secondary rounded-lg min-h-[44px] min-w-[44px]"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <nav className="flex flex-col gap-4">
+            <button onClick={() => handleNavClick('#home')} className="text-left py-3 px-4 hover:bg-secondary rounded-lg font-medium min-h-[44px]">Home</button>
+            <button onClick={() => handleNavClick('#about')} className="text-left py-3 px-4 hover:bg-secondary rounded-lg font-medium min-h-[44px]">About</button>
+            <button onClick={() => handleNavClick('#projects')} className="text-left py-3 px-4 hover:bg-secondary rounded-lg font-medium min-h-[44px]">Projects</button>
+            <button onClick={() => handleNavClick('#experience')} className="text-left py-3 px-4 hover:bg-secondary rounded-lg font-medium min-h-[44px]">Experience</button>
+            <button onClick={() => handleNavClick('#contact')} className="text-left py-3 px-4 hover:bg-secondary rounded-lg font-medium min-h-[44px]">Contact</button>
+          </nav>
+        </div>
+      </div>
+      </nav>
     </MobileMenuContext.Provider>
   );
 }
