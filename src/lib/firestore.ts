@@ -13,15 +13,22 @@ export interface ContactSubmission {
 // Submit contact form
 export const submitContactForm = async (data: Omit<ContactSubmission, 'timestamp' | 'status'>) => {
   try {
+    // Validate required fields
+    if (!data.name || !data.email || !data.message) {
+      return { success: false, error: 'Missing required fields' }
+    }
+
     const docRef = await addDoc(collection(db, 'contacts'), {
       ...data,
       timestamp: Timestamp.now(),
       status: 'pending'
     })
+    
+    console.log('Contact form submitted successfully:', docRef.id)
     return { success: true, id: docRef.id }
   } catch (error) {
     console.error('Error submitting contact form:', error)
-    return { success: false, error: 'Failed to submit form' }
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to submit form' }
   }
 }
 

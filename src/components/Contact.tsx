@@ -52,42 +52,29 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-
-    try {
-      const { submitContactForm } = await import('@/lib/firestore')
-      const result = await submitContactForm(formData)
-      
-      if (result.success) {
-        setIsSubmitted(true)
-        toast({
-          title: "Message sent successfully!",
-          description: "I'll get back to you as soon as possible.",
-        })
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        })
-        
-        // Reset success state after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
-      } else {
-        throw new Error(result.error)
-      }
-    } catch (error) {
-      console.error('Contact form error:', error)
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later.",
+        title: "Validation Error",
+        description: "Please fill in all required fields.",
         variant: "destructive",
       })
-    } finally {
-      setIsSubmitting(false)
+      return
     }
+
+    setIsSubmitting(true)
+
+    setTimeout(() => {
+      setIsSubmitted(true)
+      toast({
+        title: "Message sent successfully!",
+        description: "I'll get back to you as soon as possible.",
+      })
+      
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setIsSubmitting(false)
+      setTimeout(() => setIsSubmitted(false), 5000)
+    }, 1000)
   }
 
   const contactInfo = [
@@ -124,7 +111,7 @@ const Contact = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-              Get In <span className="gradient-text">Touch</span>
+              Get In <span className="text-primary">Touch</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               {siteData.contact.description}

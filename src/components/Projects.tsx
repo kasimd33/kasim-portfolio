@@ -60,12 +60,23 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         >
         {/* Project Image */}
         <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10">
-          <div className="absolute inset-0 bg-pattern opacity-20"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary/30 to-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm shadow-xl ring-2 ring-primary/20 hover:scale-110 hover:rotate-3 transition-transform duration-300">
-              <Star className="w-8 h-8 text-primary" />
-            </div>
-          </div>
+          {project.thumbnail ? (
+            <img 
+              src={project.thumbnail} 
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-pattern opacity-20"></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/30 to-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm shadow-xl ring-2 ring-primary/20 hover:scale-110 hover:rotate-3 transition-transform duration-300">
+                  <Star className="w-8 h-8 text-primary" />
+                </div>
+              </div>
+            </>
+          )}
           
           {/* Featured Badge */}
           {project.featured && (
@@ -163,7 +174,7 @@ const Projects = () => {
           <div className="flex justify-center w-full mb-8 sm:mb-12 md:mb-16">
             <FadeContent blur={true} duration={800} className="text-center">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-                Featured <span className="animated-gradient-text">Projects</span>
+                Featured <span className="text-primary">Projects</span>
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
                 A selection of my recent work and personal projects

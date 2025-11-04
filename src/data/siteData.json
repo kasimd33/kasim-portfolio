@@ -38,7 +38,7 @@
     {
       "id": "ballotbridge-01",
       "title": "BallotBridge — Secure Online Voting System",
-      "thumbnail": "/images/projects/ballotbridge.webp",
+      "thumbnail": "/images/projects/ballotbridge.svg",
       "description": "Full-stack web application for secure online voting with real-time results, voter authentication, and transparent ballot counting. Implemented robust security measures and user-friendly interface.",
       "tech": ["React.js", "Node.js", "Express", "MongoDB", "JWT", "Socket.io"],
       "liveUrl": "https://ballotbridge.vercel.app",
@@ -48,7 +48,7 @@
     {
       "id": "bookreviews-02",
       "title": "BookReviews — Literary Review Platform",
-      "thumbnail": "/images/projects/bookreviews.webp",
+      "thumbnail": "/images/projects/bookreviews.svg",
       "description": "Interactive platform for book enthusiasts to share reviews, ratings, and recommendations. Features user profiles, search functionality, and community-driven content.",
       "tech": ["React.js", "Node.js", "Express", "MySQL", "Bootstrap", "REST API"],
       "liveUrl": "https://bookreviews.vercel.app",
@@ -58,7 +58,7 @@
     {
       "id": "weather-03",
       "title": "Weather Forecasting Application",
-      "thumbnail": "/images/projects/weather.webp",
+      "thumbnail": "/images/projects/weather.svg",
       "description": "Responsive weather application providing accurate forecasts, current conditions, and location-based weather data. Integrated with external weather APIs for real-time updates.",
       "tech": ["JavaScript", "HTML5", "CSS3", "Weather API", "Geolocation", "Chart.js"],
       "liveUrl": "https://weather-app-kasim.vercel.app",
@@ -68,7 +68,7 @@
     {
       "id": "medoc-04",
       "title": "Medoc — Telemedicine Platform",
-      "thumbnail": "/images/projects/medoc.webp",
+      "thumbnail": "/images/projects/medoc.svg",
       "description": "Healthcare management system enabling online doctor consultations, appointment booking, and patient record management. Streamlined interface for both patients and healthcare providers.",
       "tech": ["React.js", "Node.js", "Express", "MongoDB", "Socket.io", "Stripe API"],
       "liveUrl": "https://medoc-platform.vercel.app",
